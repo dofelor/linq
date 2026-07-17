@@ -6,7 +6,14 @@ public static class TradeSeeder
 {
     public static List<Trade> GetTrades()
     {
-        List<string> symbols = StockSeeder.GetStocks()
+        return StockSeeder.GetStocks()
+            .SelectMany(stock => stock.Trades)
+            .ToList();
+    }
+
+    public static List<Trade> GetTrades(List<Stock> stocks)
+    {
+        List<string> symbols = stocks
             .Select(stock => stock.Symbol)
             .ToList();
 

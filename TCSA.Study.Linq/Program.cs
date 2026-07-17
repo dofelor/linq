@@ -4,7 +4,15 @@ using TCSA.Study.Linq;
 using TCSA.Study.Linq.Seeders;
 
 List<Stock> stocks = StockSeeder.GetStocks();
-List<Trade> trades = TradeSeeder.GetTrades();
+List<Trade> trades = stocks
+    .SelectMany(stock => stock.Trades)
+    .ToList();
+
+// SANDBOX - Write your code here
+
+
+
+//
 
 const string stockOption = "Print stocks";
 const string tradeOption = "Print all trades";

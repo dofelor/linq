@@ -4,7 +4,7 @@ public static class StockSeeder
 {
     public static List<Stock> GetStocks()
     {
-        return new List<Stock>
+        List<Stock> stocks = new List<Stock>
         {
             new Stock
             {
@@ -67,5 +67,16 @@ public static class StockSeeder
                 Sector = "Index"
             }
         };
+
+        List<Trade> trades = TradeSeeder.GetTrades(stocks);
+
+        foreach (Stock stock in stocks)
+        {
+            stock.Trades = trades
+                .Where(trade => trade.Symbol == stock.Symbol)
+                .ToList();
+        }
+
+        return stocks;
     }
 }
