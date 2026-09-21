@@ -2,6 +2,8 @@ using Spectre.Console;
 using TCSA.Study.Linq.Printing;
 using TCSA.Study.Linq;
 using TCSA.Study.Linq.Seeders;
+using TCSA.Study.Linq.Models.Enums;
+
 
 List<Stock> stocks = StockSeeder.GetStocks();
 List<Trade> trades = stocks
@@ -9,16 +11,13 @@ List<Trade> trades = stocks
     .ToList();
 
 // SANDBOX - Write your code here
-
-
-
 //
 
 const string stockOption = "Print stocks";
 const string tradeOption = "Print all trades";
 const string exitOption = "Exit";
 
-while (true)
+    while (true)
 {
     string selectedOption = AnsiConsole.Prompt(
         new SelectionPrompt<string>()
@@ -43,3 +42,4 @@ while (true)
 
     AnsiConsole.WriteLine();
 }
+
