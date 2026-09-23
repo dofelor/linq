@@ -1,11 +1,16 @@
 using Spectre.Console;
-
+using System.Diagnostics;
+using System.Globalization;
+using TCSA.Study.Linq.Models.Rows;
 namespace TCSA.Study.Linq.Printing;
 
 public static class TablePrinter
 {
     public static void PrintStocks(List<Stock> stocks)
     {
+
+        AnsiConsole.Clear();
+
         Table table = new Table()
             .Border(TableBorder.Rounded)
             .Title("[bold yellow]Wall Street Watchlist[/]");
@@ -27,6 +32,7 @@ public static class TablePrinter
 
     public static void PrintTrades(List<Trade> trades)
     {
+        AnsiConsole.Clear();
         Table table = new Table()
             .Border(TableBorder.Rounded)
             .Title("[bold yellow]Trades[/]");
@@ -51,4 +57,6 @@ public static class TablePrinter
 
         AnsiConsole.Write(table);
     }
+
+    
 }
